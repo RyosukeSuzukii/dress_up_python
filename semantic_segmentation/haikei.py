@@ -13,7 +13,7 @@ def inference(h,w,img):#推論を行う関数
     print(torch.cuda.is_available())
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")#gpu or cpuへの切り替え
 
-    model_path = './DressApp/dress_lib/models'
+    model_path = './semantic_segmentation/models'
     torch.hub.set_dir(model_path)
     model = torchvision.models.segmentation.deeplabv3_resnet101(pretrained=True)
     model = model.to(device)

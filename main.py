@@ -17,7 +17,7 @@ import os
 def dress_up_ofAlreadyData(filename,actual_dir,human_segm_dir,skeleton_dir):
     imgProc_start = time.time()
     skeleton_path = skeleton_dir+filename.split('.')[0]+".json"
-    
+
     actual_img = cv2.imread(actual_dir+filename,-1)
     human_segm = cv2.imread(human_segm_dir+filename,0)
     with open(skeleton_path) as f:
@@ -110,7 +110,7 @@ def dress_up(filename,input_img_path,height):
 
     #加工した服画像を保存
     material_brank_dir = "./materials/match_clothes/"
-    cv2.imwrite(material_brank_dir+part_clothes+"_"+clothes_name+"_"+filename,brank_img)
+    cv2.imwrite(material_brank_dir+str(part_clothes)+"_"+clothes_name+"_"+filename,brank_img)
 
     #着せ替え画像を保存
     result_dir = "./images/result_images/"
@@ -120,4 +120,4 @@ def dress_up(filename,input_img_path,height):
     print ("imgProc_time:{0}".format(imgProc_time) + "[sec]")
 
 if __name__ == "__main__":
-    dress_up("IMG_0138.png","./images/input_images/IMG_0138.png",169)
+    dress_up("IMG_0137.png","./images/input_images/IMG_0137.png",178)
