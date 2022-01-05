@@ -14,7 +14,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+#lib/
 lib64/
 parts/
 sdist/
@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Learning model
+pytorch_openpose/model/*.pth
+semantic_segmentation/models/*.pth
+semantic_segmentation/models/checkpoints/*.pth
+simple_bodypix_python/bodypix_resnet50_float_model-stride16/

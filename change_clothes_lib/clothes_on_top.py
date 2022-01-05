@@ -10,7 +10,7 @@ import cv2
 import json
 from numpy import linalg as LA
 
-CLOTHES_DIR = "./DressApp/dress_lib/clothes_datas/clothes_on_top/"
+CLOTHES_DIR = "./clothes_datas/clothes_on_top/"
 
 # 二つのベクトルからなす角を求めて返す。(例えば、人物の骨格情報から得た肩ベクトルと服の骨格情報から得た肩ベクトルとのなす角を求める)
 def get_angleFrom2Vec(v,u):

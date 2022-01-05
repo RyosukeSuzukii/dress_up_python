@@ -7,8 +7,8 @@ from .src import util
 from .src.body import Body
  
 POSE_SAVE_NAME = "img.png"
-LOAD_MODEL_PATH = './DressApp/dress_lib/pytorch_openpose_master/model/body_pose_model.pth'
-OUT_DIR_PATH = "./DressApp/dress_lib/images/skeleton_images/"
+LOAD_MODEL_PATH = './pytorch_openpose/model/body_pose_model.pth'
+OUT_DIR_PATH = "./mages/skeleton_images/"
 
 def scale_to_height(img,height):
     """高さが指定した値になるように、アスペクト比を固定して、リサイズする。
@@ -50,9 +50,9 @@ def pose_esti(actual_img,file_name):#acutual_img = BGRA
     canvas = copy.deepcopy(waku)
     canvas = util.draw_bodypose(canvas, candidate, subset)
 
-    result_image_path = OUT_DIR_PATH + file_name
+    '''result_image_path = OUT_DIR_PATH + file_name
     cv2.imwrite(result_image_path, canvas)#確認保存用
     plt.imshow(cv2.cvtColor(canvas,cv2.COLOR_BGR2RGB))
-    plt.show()
+    plt.show()'''
     
-    return(candidate)
+    return(candidate,canvas)
