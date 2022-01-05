@@ -12,9 +12,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = "3"
 
 
 # PATHS
-#imagePath = './simple_bodypix_python_master/input_img/rs_bler_IMG_0137_risize.png'
-outdirPath = "./DressApp/dress_lib/images/part_segm_images/"
-modelPath = './DressApp/dress_lib/simple_bodypix_python_master/bodypix_resnet50_float_model-stride16/model.json'
+outdirPath = "./images/part_segm_images/"
+modelPath = './simple_bodypix_python/bodypix_resnet50_float_model-stride16/model.json'
 
 # CONSTANTS
 OutputStride = 16
@@ -88,7 +87,9 @@ print("Loading model...", end="")
 graph = load_graph_model(modelPath)  # downloaded from the link above
 print("done.\nLoading sample image...", end="")
 
-#画像をリサイズする
+# 背景削除人物画像を身長に合わせたサイズにする
+# これは人物部位セグメンテーションでリサイズされ扱われる画像のサイズに合わせるため
+# OutputStrideの倍数のwidth,heightでなければならない
 def humanImgSize_decide(body_height,imgWidth,imgHeight):
     thr = 350
     human_img_height = int((body_height+thr)//OutputStride)*OutputStride + 1
@@ -96,7 +97,7 @@ def humanImgSize_decide(body_height,imgWidth,imgHeight):
     human_img_width = int(int(imgWidth * hi)//OutputStride)*OutputStride + 0
     return human_img_width,human_img_height
 
-#人物部位セグメンテーション画像を部位ごとに領域抽出する。領域抽出して領域が二つ以上なら小さい方
+# 人物部位セグメンテーション画像を部位ごとに領域抽出する。領域抽出して領域が二つ以上なら小さい方
 # を隣接する部位(最も隣接数が多い部位)で塗りつぶし調整する。
 def adjust_human_segm(human_segm):
     for p in range(len(NEW_PART_CHANNELS)):
@@ -161,7 +162,7 @@ def adjust_human_segm(human_segm):
     segm_contours_list = np.array(segm_contours_list)
     return human_segm,segm_contours_list
 
-#人物部位セグメンテーション画像に対して、人物画像からはみ出た部分を消す
+# 人物部位セグメンテーション画像に対して、人物画像からはみ出た部分を消す
 def adjust_actual_cut(actualimg,human_segm):
     h,w = actualimg.shape[:2]
     for y in range(h):
@@ -170,7 +171,7 @@ def adjust_actual_cut(actualimg,human_segm):
                 human_segm[y][x] = 0
     return human_segm
 
-#人物部位セグメンテーション画像に対して、人物画像から部位領域を拡張する
+# 人物部位セグメンテーション画像に対して、人物画像から部位領域を拡張する
 def adjust_actual_add(actualimg,human_segm,segm_contours_list):
     #right_lower_arm 5
     '''max_height = int(segm_contours_list[5-1][0][0][1])
@@ -225,7 +226,7 @@ def adjust_actual_add(actualimg,human_segm,segm_contours_list):
                     human_segm[y][x] = human_segm_copy[y][x]
     return human_segm
 
-#人物セグメンテーション画像をクロージングしてノイズを消す
+# 人物セグメンテーション画像をクロージングしてノイズを消す
 def dilated_human_segm(human_segm,k_size=(5,5),ite=1):
     order_dilated = [7,6,14,13,5,4,3,2,12,11,10,9,1,8]
     h,w = human_segm.shape[:2]
@@ -261,19 +262,16 @@ def getBoundingBox(keypointPositions, offset=(10, 10, 10, 10)):
 
 def segm_run(alpha_img,height):
     # load sample image into numpy array
-    #imagePath = alpha_img_path
-    #img = tf.keras.preprocessing.image.load_img(imagePath)
     img = cv2.cvtColor(alpha_img,cv2.COLOR_BGRA2BGR)
+    # 画像のPIL配列として生成
     img = tf.keras.preprocessing.image.array_to_img(img, scale=True)
-    '''with open("./DressApp/log.txt", mode='a') as f:# python側の処理が見えるようにログファイルに書き込み
-        f.write("tf.keras.preprocessing.image.load_img(imagePath)")
-        f.write("\n")
-        f.write(str(img.getpixel((0,0))))
-        f.write("\n")'''
+    print(str(img.getpixel((0,0))))
+
     imgWidth, imgHeight = img.size
     print("imgWidth"+str(imgWidth))
     print("imgHeight"+str(imgHeight))
-    #actualWidth,actualHeight = humanImgSize_decide(165,imgWidth,imgHeight)
+
+    # 背景削除人物画像を、その人物の身長に合わせたheight、widthにする
     actualWidth,actualHeight = humanImgSize_decide(height,imgWidth,imgHeight)
 
     targetWidth = (int(imgWidth) // OutputStride) * OutputStride + 1
@@ -370,12 +368,12 @@ def segm_run(alpha_img,height):
         segmentationMask, (segmentationMask.shape[0], segmentationMask.shape[1]))
     print('maskValue', segmentationMask[:][:])
 
-    plt.clf()
+    print("segmentationMask.shape="+str(segmentationMask.shape))
+    '''plt.clf()
     plt.title('Segmentation Mask')
     plt.ylabel('y')
     plt.xlabel('x')
-    print("segmentationMask.shape="+str(segmentationMask.shape))
-    '''plt.imshow(segmentationMask * OutputStride)
+    plt.imshow(segmentationMask * OutputStride)
     plt.show()'''
 
     # actualセグメンテーション
@@ -449,6 +447,7 @@ def segm_run(alpha_img,height):
         print(actual_part[0][0])
         print(type(actual_part[0][0]))
         print(type(sum_heatmap[0][0]))'''
+        # PART_CHANNELS形式の画像をNEW_PART_CHANNELS形式に変換する
         for y in range(actualHeight):
             for x in range(actualWidth):
                 if sum_heatmap[y][x] < actual_part[y][x]:
@@ -512,15 +511,19 @@ def segm_run(alpha_img,height):
     plt.title('human_segm')
     plt.imshow(human_segm)
     plt.show()'''
+    # 人物部位セグメンテーション画像を部位ごとに領域抽出する。領域抽出して領域が二つ以上なら小さい方
+    # を隣接する部位(最も隣接数が多い部位)で塗りつぶし調整する。
     human_segm,segm_contours_list = adjust_human_segm(human_segm)
     '''plt.title('human_segm_ver2')
     plt.imshow(human_segm)
     plt.show()'''
     #actualimg = cv2.imread(imagePath,-1)
+    # 元画像を身長を合わせたサイズにリサイズする
     actualimg = cv2.resize(alpha_img, dsize = (actualWidth,actualHeight), interpolation = cv2.INTER_AREA)
     '''plt.title('actualimg')
     plt.imshow(cv2.cvtColor(actualimg,cv2.COLOR_BGRA2RGBA))
     plt.show()'''
+    # 人物部位セグメンテーション画像に対して、人物画像からはみ出た部分を消す
     human_segm = adjust_actual_cut(actualimg,human_segm)
     '''plt.title('human_segm_ver3')
     plt.imshow(human_segm)
@@ -532,6 +535,7 @@ def segm_run(alpha_img,height):
     plt.title('actualimg_ver2')
     plt.imshow(cv2.cvtColor(actualimg,cv2.COLOR_BGRA2RGBA))
     plt.show()'''
+    # 人物部位セグメンテーション画像に対して、人物画像から部位領域を拡張する
     human_segm = adjust_actual_add(actualimg,human_segm,segm_contours_list)
     '''plt.title('human_segm_ver4')
     plt.imshow(human_segm)
@@ -543,6 +547,7 @@ def segm_run(alpha_img,height):
     plt.title('actualimg_ver3')
     plt.imshow(cv2.cvtColor(actualimg,cv2.COLOR_BGRA2RGBA))
     plt.show()'''
+    # 人物セグメンテーション画像をクロージングしてノイズを消す
     human_segm = dilated_human_segm(human_segm,(3,3),ite=2)
     '''plt.title('human_segm_ver5')
     plt.imshow(human_segm)
