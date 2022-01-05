@@ -92,9 +92,14 @@ print("done.\nLoading sample image...", end="")
 # OutputStrideの倍数のwidth,heightでなければならない
 def humanImgSize_decide(body_height,imgWidth,imgHeight):
     thr = 350
+    print("imgWidth="+str(imgWidth))
+    print("imgHeight="+str(imgHeight))
     human_img_height = int((body_height+thr)//OutputStride)*OutputStride + 1
     hi = human_img_height / imgHeight
-    human_img_width = int(int(imgWidth * hi)//OutputStride)*OutputStride + 0
+    human_img_width = math.ceil(imgWidth * hi / OutputStride)*OutputStride + 0
+    print("human_img_width="+str(human_img_width))
+    print("human_img_height="+str(human_img_height))
+
     return human_img_width,human_img_height
 
 # 人物部位セグメンテーション画像を部位ごとに領域抽出する。領域抽出して領域が二つ以上なら小さい方
