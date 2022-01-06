@@ -4,7 +4,7 @@
 機械学習で得た情報を元にあなたの体型や好み合わせた服をおすすめします.
 
 ## 利用したリポジトリ
-### A simple and minimal bodypix inference in python
+###  A simple and minimal bodypix inference in python
 > poppinace / indexnet_matting  
 > <https://github.com/poppinace/indexnet_matting>
 ### indexnet_matting
