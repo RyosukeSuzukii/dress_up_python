@@ -13,8 +13,26 @@ import json
 import numpy as np
 import os
 
+def dress_up(filename,actual_img,human_segm,candidate):
+    # 着せ替える部位(part_clothes)と着せ替える服の名称を決めて着せ替えを行う
+    part_clothes = 1
+    clothes_name = "model_3"
+    if part_clothes == 1:
+        result_img,brank_img = clothes_on_top.change(actual_img,human_segm,candidate,clothes_name)
+    else:
+        return
+
+    #加工した服画像を保存
+    material_brank_dir = "./materials/match_clothes/"
+    cv2.imwrite(material_brank_dir+str(part_clothes)+"_"+clothes_name+"_"+filename,brank_img)
+
+    #着せ替え画像を保存
+    result_dir = "./images/result_images/"
+    cv2.imwrite(result_dir+filename,result_img)#確認保存用
+
+
 # 既に取得している背景削除人物画像、人物部位セグメンテーション画像、骨格jsonから着せ替え
-def dress_up_ofAlreadyData(filename,actual_dir,human_segm_dir,skeleton_dir):
+def segm_dress_ofAlreadyData(filename,actual_dir,human_segm_dir,skeleton_dir):
     imgProc_start = time.time()
     skeleton_path = skeleton_dir+filename.split('.')[0]+".json"
 
@@ -28,27 +46,14 @@ def dress_up_ofAlreadyData(filename,actual_dir,human_segm_dir,skeleton_dir):
         candidate = np.array(candidate)#ndarrayになる
         print(type(candidate))
 
-    # 着せ替える部位(part_clothes)と着せ替える服の名称を決めて着せ替えを行う
-    part_clothes = 1
-    clothes_name = "model_0"
-    if part_clothes == 1:
-        result_img,brank_img = clothes_on_top.change(actual_img,human_segm,candidate,clothes_name)
-    else:
-        return
-
-    #加工した服画像を保存
-    material_brank_dir = "./materials/match_clothes/"
-    cv2.imwrite(material_brank_dir+part_clothes+"_"+clothes_name+"_"+filename,brank_img)
-
-    #着せ替え画像を保存
-    result_dir = "./images/result_images/"
-    cv2.imwrite(result_dir+filename,result_img)#確認保存用
+    # 着せ替え処理
+    dress_up(filename,actual_img,human_segm,candidate)
 
     imgProc_time = time.time() - imgProc_start
     print ("imgProc_time:{0}".format(imgProc_time) + "[sec]")
 
 # 入力画像、身長から着せ替えを行う
-def dress_up(filename,input_img_path,height):
+def segm_dress(filename,input_img_path,height):
     imgProc_start = time.time()
 
     # リサイズして、フォーマット変換して、exif情報の処理をし、圧縮してdir_pathに保存する
@@ -81,8 +86,8 @@ def dress_up(filename,input_img_path,height):
 
     # openposeで人物の骨格情報を得る
     candidate,canvas = pose_check.pose_esti(actual_img,filename)
-    #skeleton_dir = "./images/skeleton_images/"
-    #cv2.imwrite(skeleton_dir+filename,canvas)#確認保存用
+    skeleton_dir = "./images/skeleton_images/"
+    cv2.imwrite(skeleton_dir+filename,canvas)#確認保存用
 
     #背景削除人物画像を保存
     actual_path = "./materials/actual_images/"+filename
@@ -100,24 +105,12 @@ def dress_up(filename,input_img_path,height):
         json.dump(candidate_json, fp, indent=4, ensure_ascii=False)
 
 
-    # 着せ替える部位(part_clothes)と着せ替える服の名称を決めて着せ替えを行う
-    part_clothes = 1
-    clothes_name = "model_0"
-    if part_clothes == 1:
-        result_img,brank_img = clothes_on_top.change(actual_img,human_segm,candidate,clothes_name)
-    else:
-        pass
-
-    #加工した服画像を保存
-    material_brank_dir = "./materials/match_clothes/"
-    cv2.imwrite(material_brank_dir+str(part_clothes)+"_"+clothes_name+"_"+filename,brank_img)
-
-    #着せ替え画像を保存
-    result_dir = "./images/result_images/"
-    cv2.imwrite(result_dir+filename,result_img)#確認保存用
+    # 着せ替え処理
+    dress_up(filename,actual_img,human_segm,candidate)
 
     imgProc_time = time.time() - imgProc_start
     print ("imgProc_time:{0}".format(imgProc_time) + "[sec]")
 
 if __name__ == "__main__":
-    dress_up("IMG_0137.png","./images/input_images/IMG_0137.png",178)
+    #segm_dress("IMG_0193.JPG","./images/input_images/IMG_0193.JPG",165)
+    segm_dress_ofAlreadyData("IMG_0163.png","./materials/actual_images/","./materials/part_segms/",'./materials/skeleton_jsons/')

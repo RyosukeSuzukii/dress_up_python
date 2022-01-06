@@ -124,7 +124,7 @@ def exifcut_compression_risize(filename="",input_img_path="",output_dir=""):
     
     # 画像のフォーマットをpngにする
     print("img_format="+str(img_format))
-    if img_format == "jpg":# もしjpg画像ならpngに変換
+    if img_format == "jpg" or img_format == "JPG":# もしjpg画像ならpngに変換
         print("this img is jpg")
         filename  = filename.split('.')[0]+".png"
         #cv2.imwrite(output_dir+"format_change.png", img,[int(cv2.IMWRITE_PNG_COMPRESSION ), 1])
