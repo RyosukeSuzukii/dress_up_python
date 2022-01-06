@@ -80,3 +80,7 @@
 ### supplement　補足
 Since this repository uses other repositories, the license is subject to the restrictions of the license of the repository used.  
 Therefore, use is limited to non-commercial purposes only.
+
+## 現状
+現状、試着ができるのは上の服のみであり、かつ正面を向いた全身が写った人物画像に限定される。 
+下の服の試着は現在進行中である。
