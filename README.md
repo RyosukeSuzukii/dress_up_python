@@ -5,7 +5,7 @@
 
 ## 利用したリポジトリ
 ### poppinace / indexnet_matting
-> https://github.com/poppinace/indexnet_matting
+> <https://github.com/poppinace/indexnet_matting>
 
 ## Requirements
 | 言語/ライブラリ | Version|
