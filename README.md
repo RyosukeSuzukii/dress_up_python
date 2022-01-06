@@ -33,7 +33,7 @@
 
 ## 使い方  
 
-## Licence / Citation
+## ライセンス / 引用
 ### indexnet_matting licence
 > IndexNet Matting for non-commercial purposes
 > Copyright (c) 2019 Hao Lu All rights reserved.
