@@ -4,12 +4,13 @@
 機械学習で得た情報を元にあなたの体型や好み合わせた服をおすすめします.
 
 ## 利用したリポジトリ
+### A simple and minimal bodypix inference in python
 > poppinace / indexnet_matting  
 > <https://github.com/poppinace/indexnet_matting>
-  
+### indexnet_matting
 > ajaichemmanam / simple_bodypix_python  
 > <https://github.com/ajaichemmanam/simple_bodypix_python>
-  
+### Body and Hand Pose Estimation
 > Hzzone / pytorch-openpose  
 > <https://github.com/Hzzone/pytorch-openpose>
 
