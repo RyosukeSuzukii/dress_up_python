@@ -32,9 +32,11 @@
 | tqdm |  4.19.9　|
 
 ## 使い方  
-1. simple_bodypix_pythonとpytorch-openposeで使う学習モデルをダウンロードする　　
-※ダウンロード方法は該当リポジトリ参照
-3. 
+1. simple_bodypix_pythonとpytorch-openposeで使う学習モデルをダウンロードする。　※ダウンロード方法は該当リポジトリ参照
+2. 試着したい正面全身人物画像(png or jpg)を images/input_images に入れる。
+3. main.pyのclothes_nameへの代入記述をclothes_datas/clothes_on_topを見て試着したい衣類の名前にする
+4. main.pyの`if __name__ == "__main__":`内のsegm_dressの引数を左からfilename,inputするfileへのパス,人物の身長にする
+5. main.pyを実行 ※一番最初の試着はsemantic_segmentation/haikei.pyで使う学習モデルをダウンロード処理が入るので処理時間が長くなる
 
 ## 他のリポジトリのライセンス / 引用
 ### indexnet_matting licence
