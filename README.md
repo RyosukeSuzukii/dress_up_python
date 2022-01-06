@@ -1,7 +1,11 @@
 # dress_up_python
 ## 正面全身人物画像から試着
-<img src="https://github.com/RyosukeSuzukii/dress_up_python/blob/main/example_input.png" width="200px">
-<img src="https://github.com/RyosukeSuzukii/dress_up_python/blob/main/example_result.png" width="200px">
+<p align="center">
+  <img src="https://github.com/RyosukeSuzukii/dress_up_python/blob/main/example_input.png" width="300px">
+</p>
+<p align="center">
+  <img src="https://github.com/RyosukeSuzukii/dress_up_python/blob/main/example_result.png" width="300px">
+</p>
 正面向きの全身人物画像から背景を切り抜き、人物の部位ごとの分類と骨格情報を取得を行います。  
 そして、その背景削除人物画像、人物部位セグメンテーション画像、骨格情報、用意された衣類画像,衣類Jsonから
 衣類を背景削除人物画像に重ね、試着を行います。
