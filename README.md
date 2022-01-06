@@ -7,10 +7,10 @@
 > poppinace / indexnet_matting  
 > <https://github.com/poppinace/indexnet_matting>
   
-> ajaichemmanam / simple_bodypix_python
+> ajaichemmanam / simple_bodypix_python  
 > <https://github.com/ajaichemmanam/simple_bodypix_python>
   
-> Hzzone / pytorch-openpose
+> Hzzone / pytorch-openpose  
 > <https://github.com/Hzzone/pytorch-openpose>
 
 ## Requirements
