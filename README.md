@@ -1,6 +1,6 @@
 # dress_up_python
 ## 正面全身人物画像から試着
-![ダミー画像](http://placehold.it/100)
+![ダミー画像](https://github.com/RyosukeSuzukii/dress_up_python/blob/main/example_input.png)
 ![ダミー画像](http://placehold.it/100 "ダミー画像")
 正面向きの全身人物画像から背景を切り抜き、人物の部位ごとの分類と骨格情報を取得を行います。  
 そして、その背景削除人物画像、人物部位セグメンテーション画像、骨格情報、用意された衣類画像,衣類Jsonから
