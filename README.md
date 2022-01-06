@@ -75,7 +75,7 @@
 }
 ```
 ## License ライセンス
-<a href="https://github.com/RyosukeSuzukii/simple_bodypix_python/blob/master/LICENSE.md">GNU General Public License v3.0</a> 
+<a href="https://github.com/RyosukeSuzukii/dress_up_python/blob/main/LICENSE.md">GNU General Public License v3.0</a> 
   
 ### supplement　補足
 Since this repository uses other repositories, the license is subject to the restrictions of the license of the repository used.  
