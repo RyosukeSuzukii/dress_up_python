@@ -4,7 +4,7 @@
 機械学習で得た情報を元にあなたの体型や好み合わせた服をおすすめします.
 
 ## 利用したリポジトリ
-> poppinace / indexnet_matting
+> poppinace / indexnet_matting  
 > <https://github.com/poppinace/indexnet_matting>
 
 ## Requirements
