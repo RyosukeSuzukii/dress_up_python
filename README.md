@@ -1,6 +1,6 @@
 # dress_up_python
 ## 正面全身人物画像から試着
-正面向きの全身人物画像から背景を切り抜き、人物の部位ごとの分類と骨格情報を取得を行う。  
+正面向きの全身人物画像から背景を切り抜き、人物の部位ごとの分類と骨格情報を取得を行います。  
 そして、その背景削除人物画像、人物部位セグメンテーション画像、骨格情報、用意された衣類画像,衣類Jsonから
 衣類を背景削除人物画像に重ね、試着を行います。
 
@@ -74,3 +74,9 @@
   year = {2016}
 }
 ```
+## License ライセンス
+<https://github.com/RyosukeSuzukii/simple_bodypix_python/blob/master/LICENSE.md>
+  
+### supplement　補足
+Since this repository uses other repositories, the license is subject to the restrictions of the license of the repository used.  
+Therefore, use is limited to non-commercial purposes only.
