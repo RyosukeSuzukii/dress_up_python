@@ -32,6 +32,8 @@
 | tqdm |  4.19.9　|
 
 ## 使い方  
+1. simple_bodypix_pythonとpytorch-openposeで使う学習モデルをダウンロードする ※ダウンロード方法は該当リポジトリ参照
+2. 
 
 ## 他のリポジトリのライセンス / 引用
 ### indexnet_matting licence
