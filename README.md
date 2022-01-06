@@ -15,7 +15,7 @@
 > Hzzone / pytorch-openpose  
 > <https://github.com/Hzzone/pytorch-openpose>
   
-## Requirements 動作環境
+## 動作環境
 | 言語/ライブラリ | Version|
 | :------------| ---------: |
 | Python | 3.7.2　|
@@ -31,7 +31,7 @@
 | tensorflowjs |  3.11.0　|
 | tqdm |  4.19.9　|
 
-## Usage 
+## 使い方  
 
 ## Licence / Citation
 ### indexnet_matting licence
