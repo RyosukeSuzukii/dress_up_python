@@ -112,5 +112,5 @@ def segm_dress(filename,input_img_path,height):
     print ("imgProc_time:{0}".format(imgProc_time) + "[sec]")
 
 if __name__ == "__main__":
-    #segm_dress("IMG_0193.JPG","./images/input_images/IMG_0193.JPG",165)
-    segm_dress_ofAlreadyData("IMG_0163.png","./materials/actual_images/","./materials/part_segms/",'./materials/skeleton_jsons/')
+    segm_dress("IMG_0193.JPG","./images/input_images/IMG_0193.JPG",165)
+    #segm_dress_ofAlreadyData("IMG_0193.png","./materials/actual_images/","./materials/part_segms/",'./materials/skeleton_jsons/')
