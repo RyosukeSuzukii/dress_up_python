@@ -2,19 +2,61 @@ import cv2
 import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
-    human_segm = cv2.imread("./materials/part_segms/IMG_0139.png",0)
+    human_segm = cv2.imread("./materials/part_segms/IMG_0137.png",0)
     plt.figure(1)
     plt.title('Segmentation Mask')
     plt.ylabel('y')
     plt.xlabel('x')
     plt.imshow(human_segm)
 
-    '''skeleton_img = cv2.imread("./images/skeleton_images/IMG_0139.png")
+    skeleton_img = cv2.imread("./images/skeleton_images/IMG_0137.png")
     plt.figure(2)
     plt.title('skeleton_img')
     plt.ylabel('y')
     plt.xlabel('x')
-    plt.imshow(cv2.cvtColor(skeleton_img,cv2.COLOR_BGR2RGB))'''
+    plt.imshow(cv2.cvtColor(skeleton_img,cv2.COLOR_BGR2RGB))
+
+    human_segm = cv2.imread("./materials/part_segms/IMG_0138.png",0)
+    plt.figure(3)
+    plt.title('Segmentation Mask')
+    plt.ylabel('y')
+    plt.xlabel('x')
+    plt.imshow(human_segm)
+
+    skeleton_img = cv2.imread("./images/skeleton_images/IMG_0138.png")
+    plt.figure(4)
+    plt.title('skeleton_img')
+    plt.ylabel('y')
+    plt.xlabel('x')
+    plt.imshow(cv2.cvtColor(skeleton_img,cv2.COLOR_BGR2RGB))
+
+    human_segm = cv2.imread("./materials/part_segms/IMG_0139.png",0)
+    plt.figure(5)
+    plt.title('Segmentation Mask')
+    plt.ylabel('y')
+    plt.xlabel('x')
+    plt.imshow(human_segm)
+
+    skeleton_img = cv2.imread("./images/skeleton_images/IMG_0139.png")
+    plt.figure(6)
+    plt.title('skeleton_img')
+    plt.ylabel('y')
+    plt.xlabel('x')
+    plt.imshow(cv2.cvtColor(skeleton_img,cv2.COLOR_BGR2RGB))
+
+    human_segm = cv2.imread("./materials/part_segms/IMG_0163.png",0)
+    plt.figure(7)
+    plt.title('Segmentation Mask')
+    plt.ylabel('y')
+    plt.xlabel('x')
+    plt.imshow(human_segm)
+
+    skeleton_img = cv2.imread("./images/skeleton_images/IMG_0163.png")
+    plt.figure(8)
+    plt.title('skeleton_img')
+    plt.ylabel('y')
+    plt.xlabel('x')
+    plt.imshow(cv2.cvtColor(skeleton_img,cv2.COLOR_BGR2RGB))
 
     '''brank_img = cv2.imread("./images/temporary_imgs/brank.png",-1)
     plt.figure(3)

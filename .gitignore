@@ -137,3 +137,8 @@ simple_bodypix_python/bodypix_resnet50_float_model-stride16/
 # img
 images/*/*.png
 materials/*/*.png
+images/*/*.JPG
+materials/*/*.JPG
+
+# json
+materials/*/*.json
