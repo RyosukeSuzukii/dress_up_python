@@ -15,10 +15,18 @@
 > Hzzone / pytorch-openpose  
 > <https://github.com/Hzzone/pytorch-openpose>
 
-## Requirements
+## Requirements 動作環境
 | 言語/ライブラリ | Version|
 | :------------| ---------: |
-| python | 3.8.3　|
-| django | 3.2.7　|
-| docker | 20.10.10 |
-| docker-compose |  1.29.2　|
+| Python | 3.7.2　|
+| torch | 1.10.0　|
+| torchvision |  0.11.1　|
+| opencv-python | 4.5.3.56 |
+| numpy |  1.21.3　|
+| Pillow |  8.4.0 |
+| matplotlib |  3.4.3　|
+| scipy |  1.7.1　|
+| scikit-image |  0.18.3　|
+| tensorflow |  2.7.0　|
+| tensorflowjs |  3.11.0　|
+| tqdm |  4.19.9　|
