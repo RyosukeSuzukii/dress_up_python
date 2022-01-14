@@ -1,8 +1,15 @@
 # dress_up_python
 ## 正面全身人物画像から試着
+<p align="center">
+  <img src="https://github.com/RyosukeSuzukii/dress_up_python/blob/main/example_input.png" width="300px">
+</p>
+<p align="center">
+  <img src="https://github.com/RyosukeSuzukii/dress_up_python/blob/main/example_result.png" width="200px">
+</p>
 正面向きの全身人物画像から背景を切り抜き、人物の部位ごとの分類と骨格情報を取得を行います。  
 そして、その背景削除人物画像、人物部位セグメンテーション画像、骨格情報、用意された衣類画像,衣類Jsonから
-衣類を背景削除人物画像に重ね、試着を行います。
+衣類を背景削除人物画像に重ね、試着を行います。  
+試着処理自体は機械学習は使わず、画像処理だけで実現しています。
 
 ## 利用したリポジトリ
 ### A simple and minimal bodypix inference in python
