@@ -87,6 +87,15 @@ print("Loading model...", end="")
 graph = load_graph_model(modelPath)  # downloaded from the link above
 print("done.\nLoading sample image...", end="")
 
+# 四捨五入する関数
+def rounding(num):
+    integer_num = int(num)
+    comparison_value = num+0.5
+    if num < comparison_value:
+        return math.floor(num)
+    else:
+        return math.ceil(num)
+
 # 背景削除人物画像を身長に合わせたサイズにする
 # これは人物部位セグメンテーションでリサイズされ扱われる画像のサイズに合わせるため
 # OutputStrideの倍数のwidth,heightでなければならない
@@ -96,7 +105,7 @@ def humanImgSize_decide(body_height,imgWidth,imgHeight):
     print("imgHeight="+str(imgHeight))
     human_img_height = int((body_height+thr)//OutputStride)*OutputStride + 1
     hi = human_img_height / imgHeight
-    human_img_width = math.ceil(imgWidth * hi / OutputStride)*OutputStride + 0
+    human_img_width = rounding(imgWidth * hi / OutputStride)*OutputStride + 0
     print("human_img_width="+str(human_img_width))
     print("human_img_height="+str(human_img_height))
 

@@ -16,7 +16,7 @@ import os
 def dress_up(filename,actual_img,human_segm,candidate):
     # 着せ替える部位(part_clothes)と着せ替える服の名称を決めて着せ替えを行う
     part_clothes = 1
-    clothes_name = "model_3"
+    clothes_name = "model_4"
     if part_clothes == 1:
         result_img,brank_img = clothes_on_top.change(actual_img,human_segm,candidate,clothes_name)
     else:
@@ -63,8 +63,8 @@ def segm_dress(filename,input_img_path,height):
     # セマンティックセグメンテーション等の処理を行い、trimapとblur_imgを返す
     blur_img,trimap = haikei.cutting_out(dir_path,filename)
     #trimaps_dir = "./images/trimaps/"
-    #images_dir = "./images/blur_images/"
-    #cv2.imwrite(images_dir+filename,blur_img)#確認保存用
+    images_dir = "./images/blur_images/"
+    cv2.imwrite(images_dir+filename,blur_img)#確認保存用
     #cv2.imwrite(trimaps_dir+filename,trimap)#確認保存用
 
     # indexnet_mattingで背景を綺麗に切り抜りとったマスクを得る
@@ -112,5 +112,5 @@ def segm_dress(filename,input_img_path,height):
     print ("imgProc_time:{0}".format(imgProc_time) + "[sec]")
 
 if __name__ == "__main__":
-    segm_dress("IMG_0193.JPG","./images/input_images/IMG_0193.JPG",165)
+    segm_dress("IMG_0137.png","./images/input_images/IMG_0137.png",178)
     #segm_dress_ofAlreadyData("IMG_0193.png","./materials/actual_images/","./materials/part_segms/",'./materials/skeleton_jsons/')

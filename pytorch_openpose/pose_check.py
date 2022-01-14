@@ -8,7 +8,7 @@ from .src.body import Body
  
 POSE_SAVE_NAME = "img.png"
 LOAD_MODEL_PATH = './pytorch_openpose/model/body_pose_model.pth'
-OUT_DIR_PATH = "./mages/skeleton_images/"
+OUT_DIR_PATH = "./images/skeleton_images/"
 
 def scale_to_height(img,height):
     """高さが指定した値になるように、アスペクト比を固定して、リサイズする。

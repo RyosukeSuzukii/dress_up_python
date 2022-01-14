@@ -1,0 +1,10 @@
+{
+    "right_waist": [60,32],
+    "right_knee": [56,409],
+    "right_ankle": [57,624],
+    "left_waist": [200,26],
+    "left_knee": [212,427],
+    "left_ankle": [214,625],
+    "right_foot": {"right_knee":[56,409]},
+    "left_foot": {"left_knee":[212,427]}
+}
