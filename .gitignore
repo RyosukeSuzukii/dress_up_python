@@ -142,3 +142,6 @@ materials/*/*.JPG
 
 # json
 materials/*/*.json
+
+#example img
+example_input.png
